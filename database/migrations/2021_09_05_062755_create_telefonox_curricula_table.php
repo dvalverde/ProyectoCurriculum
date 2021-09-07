@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDireccionxCurriculaTable extends Migration
+class CreateTelefonoxCurriculaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateDireccionxCurriculaTable extends Migration
      */
     public function up()
     {
-        Schema::create('direccionx_curricula', function (Blueprint $table) {
-            $table->id();
+        Schema::create('telefonox_curricula', function (Blueprint $table) {
+            $table->string('numero');
+            $table->integer('id_curriculum')->unsigned();
+            $table->unique(["id_curriculum", "numero"], 'comp_key');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateDireccionxCurriculaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('direccionx_curricula');
+        Schema::dropIfExists('telefonox_curricula');
     }
 }

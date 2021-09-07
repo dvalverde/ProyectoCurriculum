@@ -14,7 +14,9 @@ class CreateExperienciaxCurriculaTable extends Migration
     public function up()
     {
         Schema::create('experienciax_curricula', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_experiencia')->unsigned();
+            $table->integer('id_curriculum')->unsigned();
+            $table->unique(["id_curriculum", "id_experiencia"], 'comp_key');
             $table->timestamps();
         });
     }

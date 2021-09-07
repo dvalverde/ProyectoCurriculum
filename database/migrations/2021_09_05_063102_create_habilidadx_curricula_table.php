@@ -14,7 +14,9 @@ class CreateHabilidadxCurriculaTable extends Migration
     public function up()
     {
         Schema::create('habilidadx_curricula', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_habilidad')->unsigned();
+            $table->integer('id_curriculum')->unsigned();
+            $table->unique(["id_curriculum", "id_habilidad"], 'comp_key');
             $table->timestamps();
         });
     }

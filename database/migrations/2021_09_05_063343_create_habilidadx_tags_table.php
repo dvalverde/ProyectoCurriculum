@@ -14,7 +14,9 @@ class CreateHabilidadxTagsTable extends Migration
     public function up()
     {
         Schema::create('habilidadx_tags', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_habilidad')->unsigned();
+            $table->integer('id_tag')->unsigned();
+            $table->unique(["id_tag", "id_habilidad"], 'comp_key');
             $table->timestamps();
         });
     }

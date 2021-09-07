@@ -14,7 +14,9 @@ class CreateRedesSocialesxCurriculaTable extends Migration
     public function up()
     {
         Schema::create('redes_socialesx_curricula', function (Blueprint $table) {
-            $table->id();
+            $table->string('nombre_red');
+            $table->integer('id_curriculum')->unsigned();
+            $table->unique(["id_curriculum", "nombre_red"], 'comp_key');
             $table->timestamps();
         });
     }

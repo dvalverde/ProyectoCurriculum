@@ -14,7 +14,9 @@ class CreateReferenciaxCurriculaTable extends Migration
     public function up()
     {
         Schema::create('referenciax_curricula', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_referencia')->unsigned();
+            $table->integer('id_curriculum')->unsigned();
+            $table->unique(["id_curriculum", "id_referencia"], 'comp_key');
             $table->timestamps();
         });
     }

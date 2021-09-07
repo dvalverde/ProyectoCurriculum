@@ -14,7 +14,9 @@ class CreateEmailxCurriculaTable extends Migration
     public function up()
     {
         Schema::create('emailx_curricula', function (Blueprint $table) {
-            $table->id();
+            $table->string('direccion_correo');
+            $table->integer('id_curriculum')->unsigned();
+            $table->unique(["id_curriculum", "direccion_correo"], 'comp_key');
             $table->timestamps();
         });
     }

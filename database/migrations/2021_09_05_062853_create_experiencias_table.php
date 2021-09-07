@@ -15,9 +15,9 @@ class CreateExperienciasTable extends Migration
     {
         Schema::create('experiencias', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion')
-            $table->date('fecha_nacimiento');
+            $table->string('descripcion');
             $table->string('duracion')->nullable();
+            $table->date('fecha_nacimiento');
             $table->enum('tipo', ['Academico', 'Laboral', 'Publicacion','Otro']);
             $table->integer('id_usuario')->unsigned();
             $table->timestamps();

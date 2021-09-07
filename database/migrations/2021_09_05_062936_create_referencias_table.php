@@ -15,6 +15,11 @@ class CreateReferenciasTable extends Migration
     {
         Schema::create('referencias', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
+            $table->string('nombre');
+            $table->integer('id_usuario')->unsigned();
+            $table->string('telefono_contacto');
+            $table->string('email_contacto');
             $table->timestamps();
         });
     }

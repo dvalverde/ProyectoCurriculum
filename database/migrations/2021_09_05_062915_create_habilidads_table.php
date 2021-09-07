@@ -15,6 +15,9 @@ class CreateHabilidadsTable extends Migration
     {
         Schema::create('habilidads', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
+            $table->integer('dominio')->unsigned();
+            $table->integer('id_usuario')->unsigned();
             $table->timestamps();
         });
     }
