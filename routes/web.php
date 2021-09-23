@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $installation_file = storage_path('installed');
+    if (! file_exists($installation_file)) {
+        return redirect('/install');
+    }
+
     return view('welcome');
 });
