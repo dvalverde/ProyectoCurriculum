@@ -8,11 +8,11 @@
         @csrf
         <label>
             Descripción
-            <input type="text" name="descripcion">
+            <input required type="text" name="descripcion">
         </label>
         <label>
             Dominio
-            <input type="number" name="dominio" min="1" max="10">
+            <input required type="number" name="dominio" min="1" max="10">
         </label>
         <button>Guardar</button>
     </form>
