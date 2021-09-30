@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Habilidad;
+use App\Usuario;
 use Illuminate\Support\Facades\Auth;
 
 class HabilidadController extends Controller
@@ -15,8 +16,9 @@ class HabilidadController extends Controller
 
     public function store()
     {
-        Habilidad::create([
-            'id_usuario' => Auth::id(),
+        $user = Auth::user();
+
+        $user->habilidades()->create([
             'descripcion' => request('descripcion'),
             'dominio' => request('dominio'),
         ]);
