@@ -22,5 +22,7 @@ class HabilidadController extends Controller
             'descripcion' => request('descripcion'),
             'dominio' => request('dominio'),
         ]);
+
+        return redirect('/');
     }
 }
