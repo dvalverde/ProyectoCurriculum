@@ -8,12 +8,16 @@
         @csrf
         <label>
             Descripción
-            <input required type="text" name="descripcion">
-        </label>
+            <input required type="text" name="descripcion" value="{{ old('descripcion') }}">
+        </label> <br>
+        {!! $errors->first('descripcion', '<small>:message</small><br>') !!}
+
         <label>
             Dominio
-            <input required type="number" name="dominio" min="1" max="10">
-        </label>
+            <input required type="number" name="dominio" min="1" max="10" value="{{ old('dominio') }}">
+        </label> <br>
+        {!! $errors->first('dominio', '<small>:message</small><br>') !!}
+
         <button>Guardar</button>
     </form>
 </body>
