@@ -19,3 +19,6 @@ Route::get('/', function () {
 
 Route::post('/habilidades', 'HabilidadController@store')->name('habilidad.store');
 Route::get('/habilidades/crear', 'HabilidadController@create')->name('habilidad.create');
+
+Route::post('/referencias', 'ReferenciaController@store')->name('referencia.store');
+Route::get('/referencias/crear', 'ReferenciaController@create')->name('referencia.create');
