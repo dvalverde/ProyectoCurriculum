@@ -11,7 +11,9 @@ class HabilidadController extends Controller
 {
     public function create()
     {
-        return view('habilidad.create');
+        return view('habilidad.create', [
+            'habilidad' => new Habilidad,
+        ]);
     }
 
     public function store()
