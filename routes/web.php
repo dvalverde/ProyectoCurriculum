@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/habilidades', 'HabilidadController@store')->name('habilidad.store');
+Route::get('/habilidades/crear', 'HabilidadController@create')->name('habilidad.create');
