@@ -16,12 +16,13 @@ class HabilidadController extends Controller
 
     public function store()
     {
-        $user = Auth::user();
-
-        $user->habilidades()->create([
-            'descripcion' => request('descripcion'),
-            'dominio' => request('dominio'),
+        request()->validate([
+            'descripcion' => 'required',
+            'dominio' => 'required|numeric|min:1|max:10',
         ]);
+
+        $user = Auth::user();
+        $user->habilidades()->create(request()->all());
 
         return redirect('/');
     }
