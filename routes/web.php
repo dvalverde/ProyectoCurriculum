@@ -19,3 +19,5 @@ Route::get('/', function () {
 
 Route::post('/habilidades', 'HabilidadController@store')->name('habilidad.store');
 Route::get('/habilidades/crear', 'HabilidadController@create')->name('habilidad.create');
+Route::get('/habilidades/{id}/editar', 'HabilidadController@edit')->name('habilidad.edit');
+Route::patch('/habilidades/{id}', 'HabilidadController@update')->name('habilidad.update');

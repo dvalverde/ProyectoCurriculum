@@ -28,4 +28,23 @@ class HabilidadController extends Controller
 
         return redirect('/');
     }
+
+    public function edit($id)
+    {
+        return view('habilidad.edit', [
+            'habilidad' => Habilidad::find($id),
+        ]);
+    }
+
+    public function update($id)
+    {
+        request()->validate([
+            'descripcion' => 'required',
+            'dominio' => 'required|numeric|min:1|max:10',
+        ]);
+
+        Habilidad::find($id)->update(request()->all());
+
+        return redirect('/');
+    }
 }
