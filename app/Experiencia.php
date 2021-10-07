@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Experiencia extends Model
 {
-  protected $fillable = ['id','descripcion','duracion','fecha_nacimiento','tipo','id_usuario'];
+  protected $fillable = ['id','descripcion','duracion','fecha_inicio','tipo','id_usuario'];
   public function usuario()
   {
       return $this->belongsTo(Usuario::class,'id_usuario');

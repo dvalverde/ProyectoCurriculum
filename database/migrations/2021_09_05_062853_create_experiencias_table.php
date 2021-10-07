@@ -17,7 +17,7 @@ class CreateExperienciasTable extends Migration
             $table->id();
             $table->string('descripcion');
             $table->string('duracion')->nullable();
-            $table->date('fecha_nacimiento');
+            $table->date('fecha_inicio');
             $table->enum('tipo', ['Academico', 'Laboral', 'Publicacion','Otro']);
             $table->integer('id_usuario')->unsigned();
             $table->timestamps();

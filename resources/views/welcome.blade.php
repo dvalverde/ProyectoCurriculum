@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Proyecto Curriculum Vitae
                 </div>
 
                 <div class="links">

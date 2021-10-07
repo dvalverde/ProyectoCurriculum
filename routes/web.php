@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+Route::get('/', function () {
+    return view('ExperienciasView');
 });
 
 Route::post('/habilidades', 'HabilidadController@store')->name('habilidad.store');
@@ -24,3 +29,11 @@ Route::patch('/habilidades/{id}', 'HabilidadController@update')->name('habilidad
 
 Route::post('/referencias', 'ReferenciaController@store')->name('referencia.store');
 Route::get('/referencias/crear', 'ReferenciaController@create')->name('referencia.create');
+
+Route::get('/info-experiencias',[UsuarioController::class, 'showExperiencias']);
+Route::post('/crear-experiencias', [UsuarioController::class, 'crearExperiencia']);
+Route::get('/crear-experiencias', [UsuarioController::class, 'showCrearExperiencias'])->name('crearExp');
+Route::get('/editar-experiencias', [UsuarioController::class, 'showEditExperiencias'])->name('editExp');
+Route::post('/editar-experiencias', [UsuarioController::class, 'actualizarExperiencia']);
+Route::post('/borrar-experiencias', [UsuarioController::class, 'borrarExperiencia']);
+Route::get('/buscar-experiencias', [UsuarioController::class, 'buscarExperiencias'])->name('buscarExp');
