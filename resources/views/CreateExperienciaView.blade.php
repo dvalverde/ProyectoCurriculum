@@ -20,6 +20,7 @@
   </div>
 
     <div class="container">
+        <a href="{{ url('info-experiencias') }}">Cancelar</a>
         <form id="form" action="{{ url('crear-experiencias') }}" method="POST">
             @csrf
             @if ($errors->any())
