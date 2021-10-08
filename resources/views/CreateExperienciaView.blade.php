@@ -12,6 +12,7 @@
             max-width: 600px;
         }
     </style>
+    <script type="text/javascript" src="{{ URL::asset('js/separacion.js') }}"></script>
 </head>
 
 <body  onload="fechaActual();">
@@ -58,8 +59,9 @@
                 </select>
               </div>
               <div class="container">
-                Tags: <input type="text" id="fExpTags" placeholder="tagA tagB,tagC" onfocusout="separacion()">
-
+                Tags: <input type="text" id="fExpTags" placeholder="tag" onfocusout="separacion()">
+                <div class="container" id="tags">
+                </div>
               </div>
               <button type="submit" class="btn btn-outline-success btn-block">Guardar</button>
             </div>

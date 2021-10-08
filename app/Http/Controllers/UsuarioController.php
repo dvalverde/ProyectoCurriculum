@@ -29,19 +29,14 @@ class UsuarioController extends Controller
         }
       } else {
         $resp =  collect([]);
+        $tagColl = Tag::whereIn('tag', $tags)->get();
         if ($tipo == 'ALL') {
-            $tagColl = Tag::whereIn('tag', $tags)->get();
             foreach($tagColl as $tag){
-              $temp=$tag->experiencias()->where('id_usuario',session('id_usuario_act'))->with('tags')->get();
-              $temp->merge($resp);
-              $resp = $temp;
+              $resp=$resp->merge($tag->experiencias()->where('id_usuario',session('id_usuario_act'))->with('tags')->get());
             }
         } else {
-            $tagColl = Tag::whereIn('tag', $tags)->get();//
             foreach($tagColl as $tag){
-              $temp=$tag->experiencias()->where('id_usuario',session('id_usuario_act'))->where('tipo',$tipo)->with('tags')->get();
-              $temp->merge($resp);
-              $resp = $temp;
+              $resp=$resp->merge($tag->experiencias()->where('id_usuario',session('id_usuario_act'))->where('tipo',$tipo)->with('tags')->get());
             }
         }
       }
