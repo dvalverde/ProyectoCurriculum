@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ReferenciaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create()
     {
         return view('referencia.create');

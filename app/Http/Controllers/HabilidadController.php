@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class HabilidadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create()
     {
         return view('habilidad.create', [
@@ -31,9 +36,12 @@ class HabilidadController extends Controller
 
     public function edit($id)
     {
-        return view('habilidad.edit', [
-            'habilidad' => Habilidad::find($id),
-        ]);
+        $habilidad = Auth::user()->habilidades()->find($id);
+        if (is_null($habilidad)) {
+            abort(404);
+        }
+
+        return view('habilidad.edit', compact('habilidad'));
     }
 
     public function update($id)
@@ -43,7 +51,11 @@ class HabilidadController extends Controller
             'dominio' => 'required|numeric|min:1|max:10',
         ]);
 
-        Habilidad::find($id)->update(request()->all());
+        $habilidad = Auth::user()->habilidades()->find($id);
+        if (is_null($habilidad)) {
+            abort(401);
+        }
+        $habilidad->update(request()->all());
 
         return redirect('/');
     }
