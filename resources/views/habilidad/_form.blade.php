@@ -6,8 +6,18 @@
 {!! $errors->first('descripcion', '<small>:message</small><br>') !!}
 
 <label>
-    Dominio
-    <input required type="number" name="dominio" min="1" max="10"
-    value="{{ old('dominio', $habilidad->dominio) }}">
+    Nivel de dominio
+    <fieldset id="dominio">
+        <label> <input type="radio" name="dominio" value="1"  {{ (old('dominio', $habilidad->dominio) == "1")?  "checked" : "" }}>  1 </label>
+        <label> <input type="radio" name="dominio" value="2"  {{ (old('dominio', $habilidad->dominio) == "2")?  "checked" : "" }}>  2 </label>
+        <label> <input type="radio" name="dominio" value="3"  {{ (old('dominio', $habilidad->dominio) == "3")?  "checked" : "" }}>  3 </label>
+        <label> <input type="radio" name="dominio" value="4"  {{ (old('dominio', $habilidad->dominio) == "4")?  "checked" : "" }}>  4 </label>
+        <label> <input type="radio" name="dominio" value="5"  {{ (old('dominio', $habilidad->dominio) == "5")?  "checked" : "" }}>  5 </label>
+        <label> <input type="radio" name="dominio" value="6"  {{ (old('dominio', $habilidad->dominio) == "6")?  "checked" : "" }}>  6 </label>
+        <label> <input type="radio" name="dominio" value="7"  {{ (old('dominio', $habilidad->dominio) == "7")?  "checked" : "" }}>  7 </label>
+        <label> <input type="radio" name="dominio" value="8"  {{ (old('dominio', $habilidad->dominio) == "8")?  "checked" : "" }}>  8 </label>
+        <label> <input type="radio" name="dominio" value="9"  {{ (old('dominio', $habilidad->dominio) == "9")?  "checked" : "" }}>  9 </label>
+        <label> <input type="radio" name="dominio" value="10" {{ (old('dominio', $habilidad->dominio) == "10")? "checked" : "" }}> 10 </label>
+    </fieldset>
 </label> <br>
 {!! $errors->first('dominio', '<small>:message</small><br>') !!}
