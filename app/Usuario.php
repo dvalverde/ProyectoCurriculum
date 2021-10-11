@@ -2,11 +2,22 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
-    protected $fillable = ['id','login','password','email_login','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido','fecha_nacimiento'];
+    use Notifiable;
+
+    protected $fillable = ['email_login', 'password', 'primer_nombre','segundo_nombre','primer_apellido','segundo_apellido','fecha_nacimiento'];
+    protected $hidden = ['remember_token'];
+
+    // Encriptar la contraseña
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 
     public function direccion()
     {

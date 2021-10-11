@@ -23,8 +23,8 @@ Route::view('/', 'welcome')-> name('welcome');
 Route::view('/login', 'login')-> name('login');
 Route::view('/register', 'register')-> name('register');
 
-Route::post('login', 'loginController@store');
-Route::post('register', 'registerController@store');
+Route::post('login', 'loginController@authenticate');
+Route::post('register', 'RegisterController@register');
 
 Route::post('/habilidades', 'HabilidadController@store')->name('habilidad.store');
 Route::get('/habilidades/crear', 'HabilidadController@create')->name('habilidad.create');
