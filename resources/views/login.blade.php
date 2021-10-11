@@ -9,14 +9,20 @@
 	<h1>Login</h1>
 
 	<form method="POST" action="{{ route('login')}}">
-		@csrf <!--Directiva para proteger formularios de suplantación de información-->
-		<input type="text" name="email"placeholder="Correo..." value="{{ old('email') }}"><br>
-		{!! $errors->first('email', '<small>:message</small><br>')!!}
+		{!! $errors->first('login', ':message<br>')!!}
 
-		<input name="password" placeholder="Contraseña..." value="{{ old('password') }}"><br>
+		@csrf <!--Directiva para proteger formularios de suplantación de información-->
+		<input type="text" name="email_login" placeholder="Correo..." value="{{ old('email_login') }}"><br>
+		{!! $errors->first('email_login', '<small>:message</small><br>')!!}
+
+		<input name="password" type="password" placeholder="Contraseña..."><br>
 		{!! $errors->first('password', '<small>:message</small><br>')!!}
-		<!--<textarea>-->
-		<button>Enviar</button>
+		
+		<input type="checkbox" name="remember" value="1">
+		<label for="remember">Recordar sesión</label>
+		<br>
+
+		<button>Entrar</button>
 	</form>
 
 @endsection
