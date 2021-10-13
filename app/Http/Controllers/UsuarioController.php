@@ -7,12 +7,12 @@ use App\Usuario;
 use App\Experiencia;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
     public function showExperiencias(){
-      session(['id_usuario_act' => 1]);//temporal Login
-     $usuAct=Usuario::find(session('id_usuario_act'));
+     $usuAct=Auth::user();
      $resp =$usuAct->experiencias()->with('tags')->get();
      return view('ExperienciasView',compact('resp'));
     }
@@ -20,33 +20,29 @@ class UsuarioController extends Controller
     public function buscarExperiencias(Request $request){
       $tags = $request->input('tags');
       $tipo = $request->input('tipo');
+      $id=Auth::user()->id;
       $resp = '';
       if($tags === null){
         if ($tipo == 'ALL') {
-            $resp =Experiencia::where('id_usuario', session('id_usuario_act'))->with('tags')->get();
+            $resp =Experiencia::where('id_usuario', $id)->with('tags')->get();
         } else {
-            $resp =Experiencia::where('id_usuario', session('id_usuario_act'))->where('tipo',$tipo)->with('tags')->get();
+            $resp =Experiencia::where('id_usuario', $id)->where('tipo',$tipo)->with('tags')->get();
         }
       } else {
         $resp =  collect([]);
         $tagColl = Tag::whereIn('tag', $tags)->get();
         if ($tipo == 'ALL') {
             foreach($tagColl as $tag){
-              $resp=$resp->merge($tag->experiencias()->where('id_usuario',session('id_usuario_act'))->with('tags')->get());
+              $resp=$resp->merge($tag->experiencias()->where('id_usuario',$id)->with('tags')->get());
             }
         } else {
             foreach($tagColl as $tag){
-              $resp=$resp->merge($tag->experiencias()->where('id_usuario',session('id_usuario_act'))->where('tipo',$tipo)->with('tags')->get());
+              $resp=$resp->merge($tag->experiencias()->where('id_usuario',$id)->where('tipo',$tipo)->with('tags')->get());
             }
         }
       }
      return view('ExperienciasView',compact('resp'));
    }
-
-    public function showExperiencia(request $id){
-     $resp =Experiencia::with('tags')->find($id->input('id'));
-     return view('ExperienciasView',compact('resp'));
-    }
 
     public function showCrearExperiencias(){
      return view('CreateExperienciaView');
@@ -61,7 +57,7 @@ class UsuarioController extends Controller
     public function crearExperiencia(Request $request)
     {
         //agregar id de usuario actual
-        $usuAct=Usuario::find(session('id_usuario_act'));
+        $usuAct=Auth::user();
         $request->merge([
           'id_usuario' => $usuAct->id,
         ]);
@@ -80,8 +76,7 @@ class UsuarioController extends Controller
           $expAct->tags()->attach($actTag->id);//relacionar a tag
         }
         //retornar todas las experiencias actualizadas
-        $resp = Experiencia::where('id_usuario', session('id_usuario_act'))->get();
-        return view('ExperienciasView',compact('resp'));
+        return UsuarioController::showExperiencias();
     }
 
     public function actualizarExperiencia(Request $request)
@@ -103,16 +98,14 @@ class UsuarioController extends Controller
         $ids=Tag::whereIn('tag', $tags)->pluck('id');
         $expAct->tags()->sync($ids);//relacionar a tags nuevas
         //retornar todas las experiencias actualizadas
-        $resp = Experiencia::where('id_usuario', session('id_usuario_act'))->get();
-        return view('ExperienciasView',compact('resp'));
+        return UsuarioController::showExperiencias();
     }
 
     public function borrarExperiencia(Request $id){
      Experiencia::find($id->input('id'))->tags()->detach();
      Experiencia::destroy($id->input('id'));
-     $resp =Experiencia::where('id_usuario', session('id_usuario_act'))->get();
      //dd($resp);
-     return view('ExperienciasView',compact('resp'));
+     return UsuarioController::showExperiencias();
     }
 
 
