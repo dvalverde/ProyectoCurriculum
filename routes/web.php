@@ -30,6 +30,7 @@ Route::post('/register', 'RegisterController@register');
 
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
+Route::get('/habilidades', 'HabilidadController@show')->name('habilidad.show');
 Route::post('/habilidades', 'HabilidadController@store')->name('habilidad.store');
 Route::get('/habilidades/crear', 'HabilidadController@create')->name('habilidad.create');
 Route::get('/habilidades/{id}/editar', 'HabilidadController@edit')->name('habilidad.edit');

@@ -100,12 +100,10 @@
                   <a href="{{ route('infoExp') }}">
                     <input class="button button-def" type="submit" value="Experiencias">
                   </a>
-                  <a href="{{ route('habilidad.store') }}" method="POST">
-                    @csrf
+                  <a href="{{ route('habilidad.show') }}">
                     <input class="button button-def" type="submit" value="Habilidades">
                   </a>
-                  <a href="{{ route('referencia.store') }}" method="POST">
-                    @csrf
+                  <a href="{{ route('menu') }}">
                     <input class="button button-def" type="submit" value="Referencias">
                   </a>
                 <!--

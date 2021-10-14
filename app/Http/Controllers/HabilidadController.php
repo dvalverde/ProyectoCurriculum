@@ -14,6 +14,13 @@ class HabilidadController extends Controller
         $this->middleware('auth');
     }
 
+    public function show()
+    {
+      $user = Auth::user();
+      $resp = $user->habilidades()->get();
+      return view('HabilidadesView', compact('resp'));
+    }
+
     public function create()
     {
         return view('habilidad.create', [
@@ -31,7 +38,7 @@ class HabilidadController extends Controller
         $user = Auth::user();
         $user->habilidades()->create(request()->all());
 
-        return redirect('/');
+        return HabilidadController::show();
     }
 
     public function edit($id)
@@ -57,6 +64,6 @@ class HabilidadController extends Controller
         }
         $habilidad->update(request()->all());
 
-        return redirect('/');
+        return HabilidadController::show();
     }
 }
