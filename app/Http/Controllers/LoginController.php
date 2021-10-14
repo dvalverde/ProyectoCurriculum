@@ -17,7 +17,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             request()->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->intended('/menu');
         } else {
             return back()->withErrors([
                 'login' => 'Usuario o contraseña erroneo',

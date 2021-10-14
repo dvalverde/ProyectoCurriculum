@@ -4,26 +4,101 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Datos de usuario</title>
+    <title>Experiencias de usuario</title>
     <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">-->
     <style>
-      .container {
-            max-width: 600px;
-        }
+    html, body {
+        background-color: #fff;
+        color: #636b6f;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 200;
+        height: 100vh;
+        margin: 0;
+    }
+    .button {
+        background-color: #636b6f;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 24px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .button-def {border-radius: 12px;}
+
+    .full-height {
+        height: 100vh;
+    }
+
+    .flex-center {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .position-ref {
+        position: relative;
+    }
+
+    .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 84px;
+    }
+
+    .links > a {
+        color: #636b6f;
+        padding: 0 25px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .m-b-md {
+        margin-bottom: 30px;
+    }
+
     </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="flex-center position-ref full-height">
+    @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+                <a href="{{ route('menu') }}">Home</a>
+                <a href="{{ route('logout') }}">Logout</a>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}">Register</a>
+                @endif
+            @endauth
+        </div>
+    @endif
     <a href="{{ URL::route('crearExp') }}">Crear Experiencia</a>
-    <div class="container">
+    <div>
         <form id="form" action="{{  URL::route('buscarExp') }}" method="GET">
             @csrf
-            <div class="container">
-              <div class="container">
+            <div>
+              <div>
                 Tags: <input type="text" id="fExpTags" placeholder="tagA tagB,tagC" onfocusout="separacion()">
-                <div class="container" id="tags">
+                <div id="tags">
                 </div>
               </div>
               <select name="tipo" id="tipo">
@@ -37,36 +112,35 @@
             </div>
         </form>
     </div>
-  </div>
-
-  <div class="container">
-  @foreach ($resp as $exp)
-      <div class="container">
-        <p></p>
-        <p>Descripcion: {{ $exp->descripcion }}</p>
-        <p>Fecha: {{ $exp->fecha_inicio }}</p>
-        <p>Duracion: {{ $exp->duracion }}</p>
-        <p>Tipo: {{ $exp->tipo }}</p>
-        <div class="container">
-          <p>Tags:
-          @foreach ($exp->tags as $tag)
-            # {{ $tag->tag }}
-          @endforeach
-          </p>
+    <div>
+    @foreach ($resp as $exp)
+        <div>
+          <p></p>
+          <p>Descripcion: {{ $exp->descripcion }}</p>
+          <p>Fecha: {{ $exp->fecha_inicio }}</p>
+          <p>Duracion: {{ $exp->duracion }}</p>
+          <p>Tipo: {{ $exp->tipo }}</p>
+          <div>
+            <p>Tags:
+            @foreach ($exp->tags as $tag)
+              # {{ $tag->tag }}
+            @endforeach
+            </p>
+          </div>
+          <div>
+            <form id="form" action="{{  url('editar-experiencias') }}" method="GET">
+                  <input type="hidden" id="id" name="id" value="{{ $exp->id }}">
+                  <button type="submit" class="btn btn-outline-success btn-block">Editar</button>
+            </form>
+            <form id="form" action="{{  url('borrar-experiencias') }}" method="POST">
+              @csrf
+                  <input type="hidden" id="id" name="id" value="{{ $exp->id }}">
+                  <button type="submit" class="btn btn-outline-success btn-block">Borrar</button>
+            </form>
+          </div>
         </div>
-        <div class="container">
-          <form id="form" action="{{  url('editar-experiencias') }}" method="GET">
-                <input type="hidden" id="id" name="id" value="{{ $exp->id }}">
-                <button type="submit" class="btn btn-outline-success btn-block">Editar</button>
-          </form>
-          <form id="form" action="{{  url('borrar-experiencias') }}" method="POST">
-            @csrf
-                <input type="hidden" id="id" name="id" value="{{ $exp->id }}">
-                <button type="submit" class="btn btn-outline-success btn-block">Borrar</button>
-          </form>
-        </div>
-      </div>
-  @endforeach
+    @endforeach
+    </div>
   </div>
 </body>
 

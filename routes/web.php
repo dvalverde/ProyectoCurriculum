@@ -23,6 +23,8 @@ Route::view('/', 'welcome')-> name('welcome');
 Route::view('/login', 'login')-> name('login');
 Route::view('/register', 'register')-> name('register');
 
+Route::view('/menu', 'MainMenu')-> name('menu');
+
 Route::post('/login', 'LoginController@authenticate');
 Route::post('/register', 'RegisterController@register');
 
@@ -37,7 +39,7 @@ Route::post('/referencias', 'ReferenciaController@store')->name('referencia.stor
 Route::get('/referencias/crear', 'ReferenciaController@create')->name('referencia.create');
 
 
-Route::get('/info-experiencias',[ExperienciaController::class, 'showExperiencias']);
+Route::get('/info-experiencias',[ExperienciaController::class, 'showExperiencias'])->name('infoExp');
 Route::post('/crear-experiencias', [ExperienciaController::class, 'crearExperiencia']);
 Route::get('/crear-experiencias', [ExperienciaController::class, 'showCrearExperiencias'])->name('crearExp');
 Route::get('/editar-experiencias', [ExperienciaController::class, 'showEditExperiencias'])->name('editExp');
