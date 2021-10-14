@@ -36,6 +36,7 @@ Route::get('/habilidades/crear', 'HabilidadController@create')->name('habilidad.
 Route::get('/habilidades/{id}/editar', 'HabilidadController@edit')->name('habilidad.edit');
 Route::patch('/habilidades/{id}', 'HabilidadController@update')->name('habilidad.update');
 
+Route::get('/referencias', 'ReferenciaController@show')->name('referencia.show');
 Route::post('/referencias', 'ReferenciaController@store')->name('referencia.store');
 Route::get('/referencias/crear', 'ReferenciaController@create')->name('referencia.create');
 

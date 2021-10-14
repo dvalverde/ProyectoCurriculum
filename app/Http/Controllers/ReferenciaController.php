@@ -12,6 +12,13 @@ class ReferenciaController extends Controller
         $this->middleware('auth');
     }
 
+    public function show()
+    {
+      $user = Auth::user();
+      $resp = $user->referencias()->get();
+      return view('ReferenciasView', compact('resp'));
+    }
+
     public function create()
     {
         return view('referencia.create');
@@ -29,6 +36,6 @@ class ReferenciaController extends Controller
         $user = Auth::user();
         $user->referencias()->create(request()->all());
 
-        return redirect('/');
+        return ReferenciaController::show();
     }
 }

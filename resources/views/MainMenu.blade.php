@@ -103,7 +103,7 @@
                   <a href="{{ route('habilidad.show') }}">
                     <input class="button button-def" type="submit" value="Habilidades">
                   </a>
-                  <a href="{{ route('menu') }}">
+                  <a href="{{ route('referencia.show') }}">
                     <input class="button button-def" type="submit" value="Referencias">
                   </a>
                 <!--
