@@ -106,7 +106,7 @@
             </p>
           </div>
           <div>
-            <form id="form" action="{{  url('habilidad.edit', ['id' => $hab->id]) }}" method="GET">
+            <form id="form" action="{{  route('habilidad.edit', ['id' => $hab->id]) }}" method="GET">
                   <button type="submit" class="btn btn-outline-success btn-block">Editar</button>
             </form>
           </div>
