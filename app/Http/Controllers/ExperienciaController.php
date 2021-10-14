@@ -9,7 +9,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UsuarioController extends Controller
+class ExperienciaController extends Controller
 {
     public function showExperiencias(){
      $usuAct=Auth::user();
@@ -71,12 +71,14 @@ class UsuarioController extends Controller
         //seleccionar tag
         $tags = $request->input('tags');//arreglo de tags
         //crear tags
-        foreach ($tags as $tag) {
-          $actTag = Tag::firstOrCreate(['tag' => $tag]);
-          $expAct->tags()->attach($actTag->id);//relacionar a tag
+        if (!is_null($tags)) {
+          foreach ($tags as $tag) {
+            $actTag = Tag::firstOrCreate(['tag' => $tag]);
+            $expAct->tags()->attach($actTag->id);//relacionar a tag
+          }
         }
         //retornar todas las experiencias actualizadas
-        return UsuarioController::showExperiencias();
+        return ExperienciaController::showExperiencias();
     }
 
     public function actualizarExperiencia(Request $request)
@@ -92,20 +94,28 @@ class UsuarioController extends Controller
         //seleccionar tag
         $tags = $request->input('tags');//arreglo de tags
         //crear tags
-        foreach ($tags as $tag) {
-          $actTag = Tag::firstOrCreate(['tag' => $tag]);
+        if (!is_null($tags)) {
+          foreach ($tags as $tag) {
+            if (!is_null($tag)) {
+              $actTag = Tag::firstOrCreate(['tag' => $tag]);
+            }
+          }
+          $ids=Tag::whereIn('tag', $tags)->pluck('id');
+          if (!is_null($ids)) {
+            $expAct->tags()->sync($ids);//relacionar a tags nuevas
+          }
+        }else{
+          $expAct->tags()->detach();
         }
-        $ids=Tag::whereIn('tag', $tags)->pluck('id');
-        $expAct->tags()->sync($ids);//relacionar a tags nuevas
         //retornar todas las experiencias actualizadas
-        return UsuarioController::showExperiencias();
+        return ExperienciaController::showExperiencias();
     }
 
     public function borrarExperiencia(Request $id){
      Experiencia::find($id->input('id'))->tags()->detach();
      Experiencia::destroy($id->input('id'));
      //dd($resp);
-     return UsuarioController::showExperiencias();
+     return ExperienciaController::showExperiencias();
     }
 
 
