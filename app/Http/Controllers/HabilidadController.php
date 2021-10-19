@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Habilidad;
 use App\Usuario;
+use App\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class HabilidadController extends Controller
@@ -36,7 +37,15 @@ class HabilidadController extends Controller
         ]);
 
         $user = Auth::user();
-        $user->habilidades()->create(request()->all());
+        $habilidad = $user->habilidades()->create(request()->all());
+
+        $tags = request('tags');
+        if (!is_null($tags)) {
+            foreach ($tags as $tag_name) {
+                $tag = Tag::firstOrCreate(['tag'=>$tag_name]);
+                $habilidad->tags()->attach($tag);
+            }
+        }
 
         return HabilidadController::show();
     }
@@ -63,6 +72,14 @@ class HabilidadController extends Controller
             abort(401);
         }
         $habilidad->update(request()->all());
+
+        $tags = request('tags');
+        if (!is_null($tags)) {
+            $tags = array_map(function($tag_name) {
+                return Tag::firstOrCreate(['tag'=>$tag_name])->id;
+            }, $tags);
+            $habilidad->tags()->sync($tags);
+        }
 
         return HabilidadController::show();
     }
