@@ -1,6 +1,6 @@
 @extends("layout")
 
-@section('tittle', 'Register')
+@section('title', 'Register')
 
 @section('content') <!--En donde vamos a insertar esta sección-->
 

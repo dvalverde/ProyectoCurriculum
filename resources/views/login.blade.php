@@ -2,7 +2,7 @@
 
  @extends("layout")
 
-@section('tittle', 'Login')
+@section('title', 'Login')
 
 @section('content') <!--En donde vamos a insertar esta sección-->
 
