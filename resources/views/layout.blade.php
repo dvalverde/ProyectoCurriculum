@@ -19,6 +19,30 @@
             height: 100vh;
             margin: 0;
         }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            color: black;
+            overflow: hidden;
+            background: lightgray;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        nav a {
+            float: left;
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav .active {
+            background: lightblue;
+            color:black;
+        }
+        nav a:hover {
+            background: darkgray;
+        }
         .button {
             background-color: #636b6f;
             border: none;
