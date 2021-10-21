@@ -21,3 +21,19 @@
     </fieldset>
 </label> <br>
 {!! $errors->first('dominio', '<small>:message</small><br>') !!}
+
+<label>
+    Tags
+    <select multiple name="tags[]" id="tags" data-role="tagsinput">
+        @foreach ($habilidad->tags as $tag)
+            <option value="{{$tag->tag}}">{{$tag->tag}}</option>
+        @endforeach
+    </select>
+</label> <br>
+{!! $errors->first('tags', '<small>:message</small><br>') !!}
+
+<script>
+    $('#tags').tagsinput({
+        confirmKeys: [13, 32, 44]
+    });
+</script>
