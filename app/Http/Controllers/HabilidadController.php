@@ -15,7 +15,7 @@ class HabilidadController extends Controller
         $this->middleware('auth');
     }
 
-    public function show()
+    public function index()
     {
       $user = Auth::user();
       $resp = $user->habilidades()->get();
@@ -47,7 +47,7 @@ class HabilidadController extends Controller
             }
         }
 
-        return HabilidadController::show();
+        return redirect()->route('habilidad.index');
     }
 
     public function edit($id)
@@ -81,6 +81,6 @@ class HabilidadController extends Controller
             $habilidad->tags()->sync($tags);
         }
 
-        return HabilidadController::show();
+        return redirect()->route('habilidad.index');
     }
 }

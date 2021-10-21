@@ -3,8 +3,8 @@
 
 @section('content')
     <div class="flex-center position-ref full-height">
-        <a href="{{ url('info-experiencias') }}">Cancelar</a>
-        <form id="form" action="{{ url('editar-experiencias') }}" method="POST">
+        <a href="{{ route('experiencia.index') }}">Cancelar</a>
+        <form id="form" action="{{ route('experiencia.update') }}" method="POST">
             @csrf
             @if ($errors->any())
             <div class="alert alert-danger" role="alert">

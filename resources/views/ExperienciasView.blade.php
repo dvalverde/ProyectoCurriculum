@@ -3,10 +3,10 @@
 
 @section('content')
   <div class="flex-center position-ref full-height">
-    <a href="{{ URL::route('crearExp') }}">Crear Experiencia</a>
+    <a href="{{ route('experiencia.create') }}">Crear Experiencia</a>
 
     <div>
-        <form id="form" action="{{  URL::route('buscarExp') }}" method="GET">
+        <form id="form" action="{{  route('experiencia.search') }}" method="GET">
             @csrf
             <div>
               <div>

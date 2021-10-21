@@ -12,7 +12,7 @@ class ReferenciaController extends Controller
         $this->middleware('auth');
     }
 
-    public function show()
+    public function index()
     {
       $user = Auth::user();
       $resp = $user->referencias()->get();
@@ -36,6 +36,6 @@ class ReferenciaController extends Controller
         $user = Auth::user();
         $user->referencias()->create(request()->all());
 
-        return ReferenciaController::show();
+        return redirect()->route('referencia.index');
     }
 }

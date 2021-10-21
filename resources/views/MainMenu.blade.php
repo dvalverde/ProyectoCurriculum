@@ -7,13 +7,13 @@
             <div class="title m-b-md">
                 My Curriculum Vitae
             </div>
-                <a href="{{ route('infoExp') }}">
+                <a href="{{ route('experiencia.index') }}">
                 <input class="button button-def" type="submit" value="Experiencias">
                 </a>
-                <a href="{{ route('habilidad.show') }}">
+                <a href="{{ route('habilidad.index') }}">
                 <input class="button button-def" type="submit" value="Habilidades">
                 </a>
-                <a href="{{ route('referencia.show') }}">
+                <a href="{{ route('referencia.index') }}">
                 <input class="button button-def" type="submit" value="Referencias">
                 </a>
             <!--

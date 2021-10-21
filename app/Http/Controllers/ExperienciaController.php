@@ -78,7 +78,7 @@ class ExperienciaController extends Controller
           }
         }
         //retornar todas las experiencias actualizadas
-        return ExperienciaController::showExperiencias();
+        return redirect()->route('experiencia.index');
     }
 
     public function actualizarExperiencia(Request $request)
@@ -108,14 +108,14 @@ class ExperienciaController extends Controller
           $expAct->tags()->detach();
         }
         //retornar todas las experiencias actualizadas
-        return ExperienciaController::showExperiencias();
+        return redirect()->route('experiencia.index');
     }
 
     public function borrarExperiencia(Request $id){
      Experiencia::find($id->input('id'))->tags()->detach();
      Experiencia::destroy($id->input('id'));
      //dd($resp);
-     return ExperienciaController::showExperiencias();
+     return redirect()->route('experiencia.index');
     }
 
 

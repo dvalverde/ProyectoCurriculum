@@ -2,9 +2,9 @@
 	<ul>
 		<li><a href="{{route('welcome')}}">SCV</a></li>
 	@auth
-		<li><a class="{{ setActive('infoExp') }}" href="{{ route('infoExp') }}">Experiencias</a></li>
-		<li><a class="{{ setActive('habilidad.*') }}" href="{{ route('habilidad.show') }}">Habilidades</a></li>
-		<li><a class="{{ setActive('referencia.*') }}" href="{{ route('referencia.show') }}">Referencias</a></li>
+		<li><a class="{{ setActive('experiencia.*') }}" href="{{ route('experiencia.index') }}">Experiencias</a></li>
+		<li><a class="{{ setActive('habilidad.*') }}" href="{{ route('habilidad.index') }}">Habilidades</a></li>
+		<li><a class="{{ setActive('referencia.*') }}" href="{{ route('referencia.index') }}">Referencias</a></li>
 		<li style="float:right"> <a href= "/logout">Logout</a></li>
 		<li style="float:right"><a>{{ Auth::user()->email_login }}</a></li>
 	@else
