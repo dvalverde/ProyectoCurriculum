@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<head>
-    <title>Registro de Referencia</title>
-</head>
-<body>
+@extends('layout')
+@section('title', 'Registrar referencia')
+
+@section('content')
     <h1>Registrar referencia</h1>
     <form method="POST" action= {{ route('referencia.store') }} >
         @csrf
@@ -32,4 +31,4 @@
 
         <button>Guardar</button>
     </form>
-</body>
+@endsection
