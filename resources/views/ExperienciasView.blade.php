@@ -2,8 +2,9 @@
 @section('title', 'Mis experiencias')
 
 @section('content')
-  <div class="flex-center position-ref full-height">
-    <a href="{{ route('experiencia.create') }}">Crear Experiencia</a>
+  <h2>Mis Experiencias</h2>
+  <div class="container-fluid">
+    <a href="{{ route('experiencia.create') }}">Nueva Experiencia</a>
 
     <div>
         <form id="form" action="{{  route('experiencia.search') }}" method="GET">
@@ -26,14 +27,13 @@
         </form>
     </div>
 
-    <div>
+    <ul class="list-group">
       @foreach ($resp as $exp)
-        <div>
-          <p></p>
-          <p>Descripcion: {{ $exp->descripcion }}</p>
-          <p>Fecha: {{ $exp->fecha_inicio }}</p>
-          <p>Duracion: {{ $exp->duracion }}</p>
-          <p>Tipo: {{ $exp->tipo }}</p>
+        <li class="list-group-item">
+          Descripcion: {{ $exp->descripcion }}</br>
+          Fecha: {{ $exp->fecha_inicio }}</br>
+          Duracion: {{ $exp->duracion }}</br>
+          Tipo: {{ $exp->tipo }}</br>
           <div>
             <p>Tags:
             @foreach ($exp->tags as $tag)
@@ -44,16 +44,16 @@
           <div>
             <form id="form" action="{{  url('editar-experiencias') }}" method="GET">
                   <input type="hidden" id="id" name="id" value="{{ $exp->id }}">
-                  <button type="submit" class="btn btn-outline-success btn-block">Editar</button>
+                  <button type="submit" class="btn btn-primary btn-sm">Editar</button>
             </form>
             <form id="form" action="{{  url('borrar-experiencias') }}" method="POST">
               @csrf
                   <input type="hidden" id="id" name="id" value="{{ $exp->id }}">
-                  <button type="submit" class="btn btn-outline-success btn-block">Borrar</button>
+                  <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
             </form>
           </div>
-        </div>
+        </li>
       @endforeach
-    </div>
+    </ul>
   </div>
 @endsection

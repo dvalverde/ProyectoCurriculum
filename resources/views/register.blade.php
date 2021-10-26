@@ -4,39 +4,65 @@
 
 @section('content') <!--En donde vamos a insertar esta sección-->
 
-	<h1>Registro</h1>
+	<div class="container">
+		<h2>Registro</h2>
 
-	<form method="POST" action="{{ route('register') }}">
-		@csrf <!--Directiva para proteger formularios de suplantación de información-->
+		<form method="POST" action="{{ route('register') }}">
+			@csrf <!--Directiva para proteger formularios de suplantación de información-->
 
-		<input type="text" name="email"placeholder="Correo..." value="{{ old('email') }}" required><br>
-		{!! $errors->first('email', '<small>:message</small><br>')!!}
+			<label class="form-label">
+				Correo
+				<input type="email" name="email" placeholder="Correo..." value="{{ old('email') }}" class="form-control" required><br>
+				{!! $errors->first('email', '<small>:message</small><br>')!!}
+			</label><br>
 
-		<input name="nombre1" placeholder="Primer Nombre..." value="{{ old('nombre1') }}" required><br>
-		{!! $errors->first('nombre1', '<small>:message</small><br>')!!}
+			<label class="form-label">
+				Primer Nombre
+				<input name="nombre1" placeholder="Primer Nombre..." value="{{ old('nombre1') }}" class="form-control" required><br>
+				{!! $errors->first('nombre1', '<small>:message</small><br>')!!}
+			</label>
 
-		<input name="nombre2" placeholder="Segundo Nombre..." value="{{ old('nombre2') }}"><br>
-		{!! $errors->first('nombre2', '<small>:message</small><br>')!!}
+			<label class="form-label">
+				Segundo Nombre
+				<input name="nombre2" placeholder="Segundo Nombre..." value="{{ old('nombre2') }}" class="form-control"><br>
+				{!! $errors->first('nombre2', '<small>:message</small><br>')!!}
+			</label><br>
 
-		<input name="apellido1" placeholder="Primer Apellido..." value="{{ old('apellido1') }}" required><br>
-		{!! $errors->first('apellido1', '<small>:message</small><br>')!!}
+			<label class="form-label">
+				Primer Apellido
+				<input name="apellido1" placeholder="Primer Apellido..." value="{{ old('apellido1') }}" class="form-control" required><br>
+				{!! $errors->first('apellido1', '<small>:message</small><br>')!!}
+			</label>
 
-		<input name="apellido2" placeholder="Segundo Apellido..." value="{{ old('apellido2') }}"><br>
-		{!! $errors->first('apellido2', '<small>:message</small><br>')!!}
+			<label class="form-label">
+				Segundo Apellido
+				<input name="apellido2" placeholder="Segundo Apellido..." value="{{ old('apellido2') }}" class="form-control"><br>
+				{!! $errors->first('apellido2', '<small>:message</small><br>')!!}
+			</label><br>
 
-		<input type="date" name="bDate" placeholder="Fecha Nacimiento..." value="{{ old('bDate') }}" required><br>
-		{!! $errors->first('bDate', '<small>:message</small><br>')!!}
+			<label class="form-label">
+				Fecha de nacimiento
+				<input type="date" name="bDate" placeholder="Fecha Nacimiento..." value="{{ old('bDate') }}" class="form-control" required><br>
+				{!! $errors->first('bDate', '<small>:message</small><br>')!!}
+			</label><br>
 
-		<input name="password" type="password" placeholder="Contraseña..." value="{{ old('password') }}" required><br>
-		{!! $errors->first('password', '<small>:message</small><br>')!!}
+			<label class="form-label">
+				Contraseña
+				<input name="password" type="password" placeholder="Contraseña..." value="{{ old('password') }}" class="form-control" required><br>
+				{!! $errors->first('password', '<small>:message</small><br>')!!}
+			</label>
 
-		<input name="password_confirmation" type="password" placeholder="Confirmar Contraseña..." value="{{ old('password_confirmation') }}" required><br>
-		{!! $errors->first('password', '<small>:message</small><br>')!!}
+			<label class="form-label">
+				Confirmar contraseña
+				<input name="password_confirmation" type="password" placeholder="Confirmar Contraseña..." value="{{ old('password_confirmation') }}" class="form-control" required><br>
+				{!! $errors->first('password', '<small>:message</small><br>')!!}
+			</label><br>
 
-		<!--<textarea>-->
-		<button>Registrarse</button>
-	</form>
-
+			<!--<textarea>-->
+			<a href="/" class="btn btn-outline-danger">Cancelar</a>
+			<button class="btn btn-success">Registrarse</button>
+		</form>
+	</div>
 @endsection
 
 

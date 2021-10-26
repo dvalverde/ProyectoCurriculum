@@ -2,18 +2,19 @@
 @section('title', 'Mis Referencias')
 
 @section('content')
-  <div class="flex-center position-ref full-height">
-    <a href="{{ URL::route('referencia.create') }}">Crear Referencia</a>
-    <div>
+  <h2>Mis Referencias</h2>
+  <div class="container-fluid">
+    <a class="btn btn-primary" href="{{ URL::route('referencia.create') }}">Nueva Referencia</a>
+
+    <ul class="list-group">
     @foreach ($resp as $ref)
-        <div>
-          <p></p>
-          <p>Descripcion: {{ $ref->descripcion }}</p>
-          <p>Nombre: {{ $ref->nombre }}</p>
-          <p>Telefono: {{ $ref->telefono_contacto }}</p>
-          <p>Email: {{ $ref->email_contacto }}</p>
-        </div>
+        <li class="list-group-item">
+          Descripcion: {{ $ref->descripcion }}<br/>
+          Nombre: {{ $ref->nombre }}<br/>
+          Telefono: {{ $ref->telefono_contacto }}<br/>
+          Email: {{ $ref->email_contacto }}<br/>
+        </li>
     @endforeach
-    </div>
+    </ul>
   </div>
 @endsection

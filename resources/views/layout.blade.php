@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 
@@ -18,30 +20,6 @@
             font-weight: 200;
             height: 100vh;
             margin: 0;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            color: black;
-            overflow: hidden;
-            background: lightgray;
-            font-size: 15px;
-            font-weight: 600;
-        }
-        nav a {
-            float: left;
-            display: block;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        nav .active {
-            background: lightblue;
-            color:black;
-        }
-        nav a:hover {
-            background: darkgray;
         }
         .button {
             background-color: #636b6f;
@@ -55,7 +33,7 @@
             margin: 4px 2px;
             cursor: pointer;
         }
-        .button-def {border-radius: 12px;}
+        .button-def {border-radius: 12px;}*/
 
         .full-height {
             height: 100vh;
@@ -101,9 +79,13 @@
     </style>
 </head>
 <body>
-
-    @include('partials/nav')
-    @yield('content')
-
+    <div class="d-flex flex-column justify-content-between full-height">
+        <header>
+            @include('partials/nav')
+        </header>
+        <main class="container-fluid py-4">
+            @yield('content')
+        </main>
+    <div>
 </body>
 </html>
