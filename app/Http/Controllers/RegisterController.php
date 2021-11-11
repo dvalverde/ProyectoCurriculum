@@ -17,7 +17,7 @@ class RegisterController extends Controller
 			'apellido2' => 'required',
 		]);
 
-		return Usuario::create([
+		Usuario::create([
 			'login' => request('login'),
 			'password' => request('password'),
 			'email_login' => request('email'),
@@ -27,5 +27,7 @@ class RegisterController extends Controller
 			'segundo_apellido' => request('apellido2'),
 			'fecha_nacimiento' => request('bDate')
 		]);
+
+		return redirect('/');
 	}
 }
