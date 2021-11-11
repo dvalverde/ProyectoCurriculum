@@ -35,10 +35,14 @@ Route::post('/habilidades', 'HabilidadController@store')->name('habilidad.store'
 Route::get('/habilidades/crear', 'HabilidadController@create')->name('habilidad.create');
 Route::get('/habilidades/{id}/editar', 'HabilidadController@edit')->name('habilidad.edit');
 Route::patch('/habilidades/{id}', 'HabilidadController@update')->name('habilidad.update');
+Route::delete('/habilidades/{id}', 'HabilidadController@destroy')->name('habilidad.destroy');
 
 Route::get('/referencias', 'ReferenciaController@index')->name('referencia.index');
 Route::post('/referencias', 'ReferenciaController@store')->name('referencia.store');
 Route::get('/referencias/crear', 'ReferenciaController@create')->name('referencia.create');
+Route::get('/referencias/{id}/editar', 'ReferenciaController@edit')->name('referencia.edit');
+Route::patch('/referencias/{id}', 'ReferenciaController@update')->name('referencia.update');
+Route::delete('/referencias/{id}', 'ReferenciaController@destroy')->name('referencia.destroy');
 
 
 Route::get('/info-experiencias',[ExperienciaController::class, 'showExperiencias'])->name('experiencia.index');

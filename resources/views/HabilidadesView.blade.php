@@ -20,12 +20,10 @@
               @endforeach
             </div>
             <div> 
-            <!--
-              <form id="form" action="{{  route('habilidad.edit', ['id' => $hab->id]) }}" method="GET">
-                    <button type="submit" class="btn btn-outline-success btn-block">Editar</button>
-              </form>
-            -->
               <a class="btn btn-sm btn-primary" href="{{  route('habilidad.edit', ['id'=>$hab->id]) }}">Editar</a>
+              {{ Form::open(['method' => 'DELETE', 'route' => ['habilidad.destroy', $hab->id]]) }}
+                {{ Form::button('Borrar', array('type' => 'submit', 'class' => 'btn btn-sm btn-danger')) }}
+              {{ Form::close() }}
             </div>
           </li>
         @endforeach

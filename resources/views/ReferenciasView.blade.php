@@ -13,6 +13,11 @@
           Nombre: {{ $ref->nombre }}<br/>
           Telefono: {{ $ref->telefono_contacto }}<br/>
           Email: {{ $ref->email_contacto }}<br/>
+
+          <a class="btn btn-sm btn-primary" href="{{  route('referencia.edit', ['id'=>$ref->id]) }}">Editar</a>
+          {{ Form::open(['method' => 'DELETE', 'route' => ['referencia.destroy', $ref->id]]) }}
+            {{ Form::button('Borrar', array('type' => 'submit', 'class' => 'btn btn-sm btn-danger')) }}
+          {{ Form::close() }}
         </li>
     @endforeach
     </ul>

@@ -83,4 +83,10 @@ class HabilidadController extends Controller
 
         return redirect()->route('habilidad.index');
     }
+
+    public function destroy($id) {
+        $habilidad = Auth::user()->habilidades()->findOrFail($id);
+        $habilidad->delete();
+        return back();
+    }
 }

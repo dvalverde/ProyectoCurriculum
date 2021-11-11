@@ -3,9 +3,9 @@
 
 @section('content')
     <div class="container">
-        <h1>Nueva referencia</h1>
-        <form method="POST" action= {{ route('referencia.store') }} >
-            @csrf
+        <h1>Editar referencia</h1>
+        <form method="POST" action= {{ route('referencia.update', ['id' => $referencia->id]) }} >
+            @csrf @method('PATCH')
             @include('referencia._form')
 
             <a class="btn btn-outline-danger" href="{{ route('referencia.index') }}">Cancelar</a>
