@@ -7,15 +7,9 @@
             <div class="title m-b-md">
                 My Curriculum Vitae
             </div>
-                <a href="{{ route('experiencia.index') }}">
-                <input class="button button-def" type="submit" value="Experiencias">
-                </a>
-                <a href="{{ route('habilidad.index') }}">
-                <input class="button button-def" type="submit" value="Habilidades">
-                </a>
-                <a href="{{ route('referencia.index') }}">
-                <input class="button button-def" type="submit" value="Referencias">
-                </a>
+                <a class="btn btn-primary" href="{{ route('experiencia.index') }}">Experiencias</a>
+                <a class="btn btn-primary" href="{{ route('habilidad.index') }}">Habilidades</a>
+                <a class="btn btn-primary" href="{{ route('referencia.index') }}">Referencias</a>
             <!--
             <div class="links">
                 <a href="https://laravel.com/docs">Docs</a>

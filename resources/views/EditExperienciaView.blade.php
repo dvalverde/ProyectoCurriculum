@@ -2,8 +2,8 @@
 @section('title', 'Editar experiencia')
 
 @section('content')
-    <div class="flex-center position-ref full-height">
-        <a href="{{ route('experiencia.index') }}">Cancelar</a>
+    <div class="container position-ref full-height">
+        <h2>Editar Experiencia</h2>
         <form id="form" action="{{ route('experiencia.update') }}" method="POST">
             @csrf
             @if ($errors->any())
@@ -49,7 +49,8 @@
                 </div>
               </div>
               <input type="hidden" id="id" name="id" value="{{ $exp->id }}">
-              <button type="submit" class="btn btn-outline-success btn-block">Guardar</button>
+              <a class="btn btn-outline-danger" href="{{ route('experiencia.index') }}">Cancelar</a>
+              <button type="submit" class="btn btn-success btn-block">Guardar</button>
             </div>
         </form>
     </div>

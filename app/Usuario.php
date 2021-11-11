@@ -51,4 +51,9 @@ class Usuario extends Authenticatable
     {
         return $this->hasMany(Habilidad::class,'id_usuario');
     }
+
+    public function nombreCompleto()
+    {
+        return "$this->primer_nombre $this->primer_apellido $this->segundo_apellido";
+    }
 }

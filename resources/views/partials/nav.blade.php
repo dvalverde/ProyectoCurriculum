@@ -1,15 +1,56 @@
-<nav>
-	<ul>
-		<li><a href="{{route('welcome')}}">SCV</a></li>
-	@auth
-		<li><a class="{{ setActive('experiencia.*') }}" href="{{ route('experiencia.index') }}">Experiencias</a></li>
-		<li><a class="{{ setActive('habilidad.*') }}" href="{{ route('habilidad.index') }}">Habilidades</a></li>
-		<li><a class="{{ setActive('referencia.*') }}" href="{{ route('referencia.index') }}">Referencias</a></li>
-		<li style="float:right"> <a href= "/logout">Logout</a></li>
-		<li style="float:right"><a>{{ Auth::user()->email_login }}</a></li>
-	@else
-		<li style="float:right" class= "{{ setActive('login')}}"><a href= "/login">Login</a></li>
-		<li style="float:right" class= "{{ setActive('register')}}"><a href= "/register">Register</a></li>
-	@endauth
-	</ul>
+<nav class="navbar navbar-expand-md sticky-top navbar-light bg-light shadow-sm">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{route('welcome')}}">SCV</a>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav me-auto">
+			@auth
+				<li>
+					<a class="nav-link {{ setActive('experiencia.*') }}" href="{{ route('experiencia.index') }}">
+						Experiencias
+					</a>
+				</li>
+				<li>
+					<a class="nav-link {{ setActive('habilidad.*') }}" href="{{ route('habilidad.index') }}">
+						Habilidades
+					</a>
+				</li>
+				<li>
+					<a class="nav-link {{ setActive('referencia.*') }}" href="{{ route('referencia.index') }}">
+						Referencias
+					</a>
+				</li>
+			@endauth
+			</ul>
+
+			<ul class="navbar-nav ms-auto">
+			@auth
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{ Auth::user()->nombreCompleto() }}
+					</a>
+					<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+						<div class="dropdown-item">
+							<big>{{ Auth::user()->nombreCompleto() }}</big>
+							<br>
+							<span>{{ Auth::user()->email_login }}</span>
+						</div>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
+					</div>
+				</li>
+			@else
+				<li>
+					<a class="nav-link {{ setActive('referencia.*') }}" href= "/login">
+						Login
+					</a>
+				</li>
+				<li>
+					<a class="nav-link {{ setActive('referencia.*') }}" href= "/register">
+						Register
+					</a>
+				</li>
+			@endauth
+			</ul>
+		</div>
+	<div>
 </nav>

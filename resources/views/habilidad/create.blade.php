@@ -3,12 +3,16 @@
 @section('title', 'Registrar Habilidad')
 
 @section('content')
-    <h1>Registrar habilidad</h1>
-    <form method="POST" action= {{ route('habilidad.store') }} >
-        @csrf
+    <div class="container">
+        <h2>Nueva habilidad</h2>
 
-        @include('habilidad._form')
+        <form method="POST" action= {{ route('habilidad.store') }} >
+            @csrf
 
-        <button>Guardar</button>
-    </form>
+            @include('habilidad._form')
+
+            <a class="btn btn-outline-danger" href="{{ route('habilidad.index') }}">Cancelar</a>
+            <button class="btn btn-success">Guardar</button>
+        </form>
+    </div>
 @endsection

@@ -2,8 +2,8 @@
 @section('title', 'Registrar experiencia')
 
 @section('content')
-    <div class="flex-center position-ref full-height">
-        <a href="{{ route('experiencia.index') }}">Cancelar</a>
+    <div class="container position-ref full-height">
+        <h2>Nueva Experiencia</h2>
         <form id="form" action="{{ route('experiencia.store') }}" method="POST">
             @csrf
             @if ($errors->any())
@@ -22,13 +22,13 @@
             @endif
             <div >
               <div >
-                <label for="start">Descripcion </label>
-                <textarea name="descripcion" rows="1" placeholder="Descripcion de la experiencia" class="form-control">descripcion</textarea>
+                <label for="descripcion">Descripcion </label>
+                <textarea name="descripcion" id="descripcion" rows="1" placeholder="Descripcion de la experiencia" class="form-control">descripcion</textarea>
               </div>
               <div >
-                <label for="start">Fecha inicio:</label>
+                <label for="fechaInicio">Fecha inicio:</label>
                 <input type="date" id="fechaInicio" name="fecha_inicio" value="2020-01-01"  min="1950-01-01" max="{{ Carbon\Carbon::now()->toDateString() }}">
-                <label for="start">Duracion:
+                <label for="Duracion">Duracion:
                 <input type="text" id="Duracion" name="duracion" placeholder="ej: 5 meses">
               </div>
               <div >
@@ -45,7 +45,8 @@
                 <div  id="tags">
                 </div>
               </div>
-              <button type="submit" class="btn btn-outline-success btn-block">Guardar</button>
+              <a class="btn btn-outline-danger" href="{{ route('experiencia.index') }}">Cancelar</a>
+              <button type="submit" class="btn btn-success btn-block">Guardar</button>
             </div>
         </form>
     </div>
