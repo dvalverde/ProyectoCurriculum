@@ -4,7 +4,7 @@
 @section('content')
   <h2>Mis Referencias</h2>
   <div class="container-fluid">
-    <a class="btn btn-primary" href="{{ URL::route('referencia.create') }}">Nueva Referencia</a>
+    <a class="btn btn-primary" href="{{ route('referencia.create') }}">Nueva Referencia</a>
 
     <ul class="list-group">
     @foreach ($resp as $ref)
