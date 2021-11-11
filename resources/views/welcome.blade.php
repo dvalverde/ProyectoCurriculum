@@ -7,6 +7,12 @@
             <div class="title m-b-md">
                 Sistema de Curriculum Vitae
             </div>
+
+            @auth
+                <a class="btn btn-primary" href="{{ route('experiencia.index') }}">Experiencias</a>
+                <a class="btn btn-primary" href="{{ route('habilidad.index') }}">Habilidades</a>
+                <a class="btn btn-primary" href="{{ route('referencia.index') }}">Referencias</a>
+            @endauth
             <!--
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
